@@ -4,7 +4,7 @@
 
 traducteur::traducteur()
 {
-    QObject::connect(s);
+    QObject::connect();
 }
 
 void traducteur::envoi(){
