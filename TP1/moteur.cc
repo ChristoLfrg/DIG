@@ -1,12 +1,14 @@
 #include "moteur.hh"
 #include<string>
 
+
+
 moteur::moteur()
 {
 
 }
 
-int moteur::resultat(std::string const& operation, int const& int1, int const& int2){
+int moteur::resultat(std::string operation, int int1, int int2){
     if (operation == "+"){
         return int1+int2;
     }
@@ -24,3 +26,4 @@ int moteur::resultat(std::string const& operation, int const& int1, int const& i
     }
     else return 0;
 }
+

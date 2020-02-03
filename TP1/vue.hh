@@ -1,10 +1,9 @@
 #pragma once
 #include <QtWidgets>
-//affiche les composant graphique et “communique” avec Traducteur.
 #include "traducteur.hh"
 
 class vue : public QWidget
-{Q_OBJECT
+{//Q_OBJECT
 
 public:
     vue();
@@ -13,7 +12,6 @@ public:
     QComboBox *getCombobox() const;
     QPushButton *getEgal() const;
     QLCDNumber *getResultat() const;
-    void envoi();
 
 private:
     QSpinBox* int1;
@@ -24,6 +22,6 @@ private:
 
     traducteur t;
 signals:
-    void signe(std::string a, int b, int c);
+    void send();
 };
 

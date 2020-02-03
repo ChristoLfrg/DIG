@@ -1,16 +1,14 @@
 #include "vue.hh"
-#include "traducteur.hh"
 #include<iostream>
 
-vue::vue()
-    :QWidget(),
-     int1(new QSpinBox(this)),
-     int2(new QSpinBox(this)),
-     operation(new QComboBox(this)),
-     egal(new QPushButton("=", this)),
-     resultat(new QLCDNumber(this))
+vue::vue() :
+    QWidget(),
+    int1(new QSpinBox(this)),
+    int2(new QSpinBox(this)),
+    operation(new QComboBox(this)),
+    egal(new QPushButton("=", this)),
+    resultat(new QLCDNumber(this))
 {
-
     operation->addItem("+");
     operation->addItem("-");
     operation->addItem("*");
@@ -20,7 +18,7 @@ vue::vue()
     layout->addWidget(int1);
     layout->addWidget(operation);
     layout->addWidget(int2);
-    layout ->addWidget(egal);
+    layout->addWidget(egal);
     layout->addWidget(resultat);
 
     layout->setMargin(50);
@@ -28,11 +26,10 @@ vue::vue()
 
     setLayout(layout);
 
-    QObject::connect(egal, &QPushButton::clicked,
-                     this, &vue::envoi);
-/*
- * http://guillaume.belz.free.fr/doku.php?id=les_signaux_et_slots_dans_qt5
- */
+    QObject::connect(
+                egal, &QPushButton::clicked,    // connecte le signal clicked() de egal
+                this, &vue::send);              // au slot send() de vue
+
 }
 
 QSpinBox *vue::getSpinbox1() const
@@ -60,8 +57,9 @@ QLCDNumber *vue::getResultat() const
     return resultat;
 }
 
-void vue::envoi()
+void vue::send()
 {
-    emit signe(operation->currentText().toStdString(), int1->value(), int2->value());
+    std::cout << "vue::send\n";
+    emit t.send();
 }
 

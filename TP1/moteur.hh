@@ -1,12 +1,12 @@
 #pragma once
+#include <QtWidgets>
 #include<string>
 
 class moteur
 {
 public:
     moteur();
-    int resultat(std::string const& operation, int const& int1, int const& int2);
-
+    int resultat(std::string operation, int int1, int int2);
 private:
-
 };
+
