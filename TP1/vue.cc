@@ -30,36 +30,19 @@ vue::vue() :
                 egal, &QPushButton::clicked,    // connecte le signal clicked() de egal
                 this, &vue::send);              // au slot send() de vue
 
-}
+    QObject::connect(
+                this, &traducteur::send,           // connecte le signal clicked() de egal
+                &t, &vue::res);               // au slot send() de vue
 
-QSpinBox *vue::getSpinbox1() const
-{
-    return int1;
-}
-
-QSpinBox *vue::getSpinbox2() const
-{
-    return int2;
-}
-
-QComboBox *vue::getCombobox() const
-{
-    return operation;
-}
-
-QPushButton *vue::getEgal() const
-{
-    return egal;
-}
-
-QLCDNumber *vue::getResultat() const
-{
-    return resultat;
 }
 
 void vue::send()
 {
     std::cout << "vue::send\n";
-    emit t.send();
+    emit t->send(this->operation->currentText().toStdString(), this->int1->value(), this->int2->value());
+}
+
+void vue::res(int a) {
+    this->resultat->display(a);
 }
 

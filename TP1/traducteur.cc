@@ -4,17 +4,14 @@
 
 
 traducteur::traducteur()
-{
+{/*
     QObject::connect(
-                send(), &traducteur::send,      // connecte le signal clicked() de egal
-                this, &traducteur::calcul);     // au slot send() de vue
-
+                this, &traducteur::send,      // connecte le signal clicked() de egal
+                this, &vue::res);     // au slot send() de vue
+*/
 }
 
-void traducteur::send(){
-    std::cout << "traducteur::send\n";
-}
-
-void traducteur::calcul(){
-    std::cout << "Calcul...\n";
+void traducteur::send(std::string op, int a, int b){
+    int resultat = m.resultat(op, a, b);
+    this->envoi(resultat);
 }

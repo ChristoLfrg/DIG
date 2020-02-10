@@ -4,13 +4,14 @@
 #include"moteur.hh"
 
 class traducteur : public QObject
-{//Q_OBJECT
+{
+    Q_OBJECT
 
 private:
     moteur m;
 public:
     traducteur();
+    void send(std::string op, int a, int b);
+    void envoi(int a);
 signals:
-    void send();
-    void calcul();
 };

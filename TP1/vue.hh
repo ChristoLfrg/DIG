@@ -3,7 +3,8 @@
 #include "traducteur.hh"
 
 class vue : public QWidget
-{//Q_OBJECT
+{
+    //Q_OBJECT
 
 public:
     vue();
@@ -13,6 +14,8 @@ public:
     QPushButton *getEgal() const;
     QLCDNumber *getResultat() const;
 
+    void res(int a);
+
 private:
     QSpinBox* int1;
     QSpinBox* int2;
@@ -20,7 +23,7 @@ private:
     QPushButton* egal;
     QLCDNumber* resultat;
 
-    traducteur t;
+    traducteur* t;
 signals:
     void send();
 };
